@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Szymon Nastaly's Blog" } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="py-6 px-6 border-b border-border">
+      <nav class="max-w-[var(--max-w-content)] mx-auto flex items-center justify-between">
+        <a
+          href="/"
+          class="text-xl font-semibold text-charcoal hover:text-terracotta no-underline"
+        >
+          Szymon Nastaly
+        </a>
+        <div class="flex items-center gap-6">
+          <a
+            href="/"
+            class:list={[
+              "text-sm font-medium no-underline transition-colors",
+              currentPath === "/" ? "text-terracotta" : "text-muted hover:text-charcoal"
+            ]}
+          >
+            Blog
+          </a>
+          <a
+            href="/now"
+            class:list={[
+              "text-sm font-medium no-underline transition-colors",
+              currentPath === "/now" || currentPath === "/now/" ? "text-terracotta" : "text-muted hover:text-charcoal"
+            ]}
+          >
+            Now
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-1 max-w-[var(--max-w-content)] mx-auto px-6 py-12 w-full">
+      <slot />
+    </main>
+    <footer class="py-6 text-center text-sm text-muted">
+      <p>&copy; {new Date().getFullYear()} Szymon Nastaly</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+---
+import { getEntry, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const page = await getEntry('pages', 'now');
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await render(page);
+---
+
+<Layout title="Now - Szymon Nastaly">
+  <article>
+    <h1 class="text-3xl md:text-4xl font-semibold mb-10 text-charcoal">
+      {page.data.title}
+    </h1>
+    <div class="prose-warm">
+      <Content />
+    </div>
+  </article>
+</Layout>

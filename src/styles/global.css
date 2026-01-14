@@ -1,0 +1,160 @@
+/* Instrument Sans - a geometric, warm sans-serif */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Warm color palette */
+  --color-ivory: #FAF8F5;
+  --color-ivory-dark: #F2EDE6;
+  --color-charcoal: #2D2A26;
+  --color-charcoal-light: #4A4640;
+  --color-terracotta: #C45D3A;
+  --color-terracotta-dark: #A84E30;
+  --color-muted: #8B8680;
+  --color-border: #E8E4DF;
+  --color-border-dark: #D4CFC8;
+
+  /* Typography */
+  --font-sans: 'Instrument Sans', system-ui, sans-serif;
+
+  /* Content width */
+  --max-w-content: 42rem;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  /* Smooth transitions for interactive elements */
+  a {
+    transition: color 0.15s ease;
+  }
+
+  /* Constrain images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Custom prose styling for WordPress content */
+@layer components {
+  .prose-warm {
+    line-height: 1.75;
+    color: var(--color-charcoal);
+  }
+
+  .prose-warm h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-charcoal);
+  }
+
+  .prose-warm h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-charcoal);
+  }
+
+  .prose-warm p {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-warm a {
+    color: var(--color-terracotta);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose-warm a:hover {
+    color: var(--color-terracotta-dark);
+  }
+
+  .prose-warm strong {
+    font-weight: 600;
+    color: var(--color-charcoal);
+  }
+
+  .prose-warm ul,
+  .prose-warm ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-warm li {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-warm blockquote {
+    border-left: 3px solid var(--color-terracotta);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .prose-warm pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .prose-warm code {
+    font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+    font-size: 0.875em;
+  }
+
+  .prose-warm :not(pre) > code {
+    background: var(--color-ivory-dark);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    color: var(--color-charcoal-light);
+  }
+
+  .prose-warm img {
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  /* Home intro section - image left, text right */
+  .home-intro img {
+    float: left;
+    width: 160px;
+    height: auto;
+    margin: 0 1.5rem 1rem 0;
+    border-radius: 0.5rem;
+  }
+
+  .home-intro::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .prose-warm hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+}
